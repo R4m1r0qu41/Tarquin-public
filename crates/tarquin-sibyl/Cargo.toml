@@ -1,0 +1,16 @@
+[package]
+name = "tarquin-sibyl"
+version = "0.1.0"
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+description = "Tarquin Sibyl layer: recognized legal-oracle registry and LBRY attestation records."
+
+[dependencies]
+serde.workspace = true
+serde_json.workspace = true
+thiserror.workspace = true
+sha2.workspace = true
+base64.workspace = true
+arrow-core.workspace = true
+arrow-identity.workspace = true

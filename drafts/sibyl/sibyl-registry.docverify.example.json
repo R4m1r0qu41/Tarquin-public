@@ -1,0 +1,40 @@
+{
+  "registry_metadata": {
+    "schema_version": "0.1",
+    "registry_name": "sibyl_registry",
+    "updated_at": "2026-06-26T00:00:00Z",
+    "notes": "Draft example — document-verification Sibyl identity. Not production authority data."
+  },
+  "entries": [
+    {
+      "sibyl_id": "SBYL-MX-DOCVERIFY-001",
+      "did": "did:example:sibyl-mx-docverify-001",
+      "name": "Example MX Document-Verification Oracle",
+      "authority_profile": {
+        "authority_type": "document_verification_oracle",
+        "recognized_authority_ref": "RFC007B-EXAMPLE-DOCVERIFY-001",
+        "jurisdictions": ["MX"],
+        "legal_system_refs": ["LS-MX-FED-01"],
+        "source_authority_basis": ["regulatory_register"]
+      },
+      "attestation_scope": {
+        "leg_subtypes": ["ADM"],
+        "domains": ["identity_documents"],
+        "max_confidence": "C",
+        "verification_regime": "institutional_attestation"
+      },
+      "keys": [
+        {
+          "key_id": "did:example:sibyl-mx-docverify-001#attestation-1",
+          "purpose": "attestation",
+          "algorithm": "Ed25519",
+          "status": "active",
+          "valid_from": "2026-06-26T00:00:00Z"
+        }
+      ],
+      "status": "draft",
+      "added_at": "2026-06-26T00:00:00Z",
+      "notes": "Document-verification Sibyl identity. Regime institutional_attestation (Arrow legal_attestation, ceiling C); not a new Arrow regime. source_authority_basis names the registered authority (registry), not the verification method."
+    }
+  ]
+}

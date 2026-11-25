@@ -1,0 +1,26 @@
+{
+  "baseline_id": "stack-2026-07-07",
+  "description": "Frozen three-repo stack baseline (current-state.md Phase B item 4; ADR-0003 IFP-004). The three-repo acceptance CI checks out Orlog and Arrow at these exact commits, recomputes every pinned hash from source, and fails loudly on any mismatch. Tarquin itself rides the triggering ref (a repo cannot pin its own future commit); its generated-artifact integrity is carried by ruleset_sha256 + the parity harness.",
+  "sealed_at": "2026-07-07",
+  "orlog": {
+    "commit": "9a61a28bd57373f07a5ba8956d6d726544a32c36",
+    "slc_bundle": {
+      "artifact_id": "slc-late-payment-001",
+      "artifact_hash": "sha256:c0ac8c5ead20d8f07058164f7ab633c812494c408b3fdccc25300adf1e67b30e"
+    },
+    "lex_grounding": {
+      "bundle_id": "lex-grounding-001",
+      "bundle_hash": "sha256:fb2d2e099629c23a730267b51c331ce38df7f9732392647f400d6e378a6b131f"
+    }
+  },
+  "arrow": {
+    "commit": "b8df5051fa19431fe047217c30ff13ff446e520a",
+    "protocol": "1.6.0",
+    "baseline": "arrow-v1.6.0",
+    "rule_surface_hash": "sha256:347299b13271b846485d309fc7ff334810f92233c0a0130415381e9b74d9dcbb"
+  },
+  "tarquin": {
+    "commit_policy": "triggering ref",
+    "ruleset_sha256": "fc9ccfb1e5f3285f2fa57d683b85c7818487c11f045bf070072d70c651a34a16"
+  }
+}

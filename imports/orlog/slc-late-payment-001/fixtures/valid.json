@@ -1,0 +1,140 @@
+{
+  "description": "Well-formed inputs producing agreed outcomes.",
+  "cases": [
+    {
+      "case_id": "valid-001",
+      "name": "paid on due date - no charge",
+      "terms": {
+        "principal": 100000,
+        "currency": "USD",
+        "dueDate": "2026-07-01",
+        "graceDays": 5,
+        "accrualBasis": "FROM_GRACE_EXPIRY",
+        "chargeKind": "ANNUAL_RATE",
+        "rateOrAmount": 9,
+        "capKind": "PCT_OF_REFERENCE",
+        "capValue": 5
+      },
+      "event": {
+        "paidDate": "2026-07-01",
+        "amountPaid": 100000
+      },
+      "expected": {
+        "daysLate": 0,
+        "chargeableDays": 0,
+        "lateCharge": 0,
+        "capped": false,
+        "totalDue": 100000,
+        "obligation": "NONE"
+      }
+    },
+    {
+      "case_id": "valid-002",
+      "name": "paid on last grace day - late but no charge",
+      "terms": {
+        "principal": 100000,
+        "currency": "USD",
+        "dueDate": "2026-07-01",
+        "graceDays": 5,
+        "accrualBasis": "FROM_GRACE_EXPIRY",
+        "chargeKind": "ANNUAL_RATE",
+        "rateOrAmount": 9,
+        "capKind": "PCT_OF_REFERENCE",
+        "capValue": 5
+      },
+      "event": {
+        "paidDate": "2026-07-06",
+        "amountPaid": 100000
+      },
+      "expected": {
+        "daysLate": 5,
+        "chargeableDays": 0,
+        "lateCharge": 0,
+        "capped": false,
+        "totalDue": 100000,
+        "obligation": "NONE"
+      }
+    },
+    {
+      "case_id": "valid-003",
+      "name": "20 days late, accrual from grace expiry, 9% ACT/365F",
+      "terms": {
+        "principal": 100000,
+        "currency": "USD",
+        "dueDate": "2026-07-01",
+        "graceDays": 5,
+        "accrualBasis": "FROM_GRACE_EXPIRY",
+        "chargeKind": "ANNUAL_RATE",
+        "rateOrAmount": 9,
+        "capKind": "PCT_OF_REFERENCE",
+        "capValue": 5
+      },
+      "event": {
+        "paidDate": "2026-07-21",
+        "amountPaid": 100000
+      },
+      "expected": {
+        "daysLate": 20,
+        "chargeableDays": 15,
+        "lateCharge": 369.86,
+        "capped": false,
+        "totalDue": 100369.86,
+        "obligation": "LATE_CHARGE_DUE"
+      }
+    },
+    {
+      "case_id": "valid-004",
+      "name": "20 days late, accrual from due date",
+      "terms": {
+        "principal": 100000,
+        "currency": "USD",
+        "dueDate": "2026-07-01",
+        "graceDays": 5,
+        "accrualBasis": "FROM_DUE_DATE",
+        "chargeKind": "ANNUAL_RATE",
+        "rateOrAmount": 9,
+        "capKind": "PCT_OF_REFERENCE",
+        "capValue": 5
+      },
+      "event": {
+        "paidDate": "2026-07-21",
+        "amountPaid": 100000
+      },
+      "expected": {
+        "daysLate": 20,
+        "chargeableDays": 20,
+        "lateCharge": 493.15,
+        "capped": false,
+        "totalDue": 100493.15,
+        "obligation": "LATE_CHARGE_DUE"
+      }
+    },
+    {
+      "case_id": "valid-005",
+      "name": "per-day charge hits absolute cap",
+      "terms": {
+        "principal": 100000,
+        "currency": "USD",
+        "dueDate": "2026-07-01",
+        "graceDays": 5,
+        "accrualBasis": "FROM_GRACE_EXPIRY",
+        "chargeKind": "PER_DAY_AMOUNT",
+        "rateOrAmount": 50,
+        "capKind": "ABSOLUTE_AMOUNT",
+        "capValue": 500
+      },
+      "event": {
+        "paidDate": "2026-07-21",
+        "amountPaid": 100000
+      },
+      "expected": {
+        "daysLate": 20,
+        "chargeableDays": 15,
+        "lateCharge": 500,
+        "capped": true,
+        "totalDue": 100500,
+        "obligation": "LATE_CHARGE_DUE"
+      }
+    }
+  ]
+}

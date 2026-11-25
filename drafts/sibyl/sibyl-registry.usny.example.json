@@ -1,0 +1,40 @@
+{
+  "registry_metadata": {
+    "schema_version": "0.1",
+    "registry_name": "sibyl_registry",
+    "updated_at": "2026-06-11T00:00:00Z",
+    "notes": "Synthetic US-NY example for the SLC handoff dry run (slc-late-payment-001, jurisdictions US-NY). Not production authority data."
+  },
+  "entries": [
+    {
+      "sibyl_id": "SBYL-US-NY-COURT-001",
+      "did": "did:example:sibyl-us-ny-court-001",
+      "name": "Synthetic New York Commercial Court Monitor",
+      "authority_profile": {
+        "authority_type": "court_monitor",
+        "recognized_authority_ref": "RFC007B-EXAMPLE-USNY-001",
+        "jurisdictions": ["US", "US-NY"],
+        "legal_system_refs": ["LS-US-STATE-01"],
+        "source_authority_basis": ["official_docket", "court_order"]
+      },
+      "attestation_scope": {
+        "leg_subtypes": ["JUD"],
+        "domains": ["commercial_payment_disputes"],
+        "max_confidence": "C",
+        "verification_regime": "structured_legal_attestation"
+      },
+      "keys": [
+        {
+          "key_id": "did:example:sibyl-us-ny-court-001#attestation-1",
+          "purpose": "attestation",
+          "algorithm": "Ed25519",
+          "status": "active",
+          "valid_from": "2026-06-11T00:00:00Z"
+        }
+      ],
+      "status": "active",
+      "added_at": "2026-06-11T00:00:00Z",
+      "notes": "Synthetic profile. structured_legal_attestation with a declared C ceiling: the regime permits B, but this registry entry's artifacts/accountability posture declares C (B is a ceiling, not a default)."
+    }
+  ]
+}

@@ -1,0 +1,20 @@
+[package]
+name = "tarquin-engine"
+version = "0.1.0"
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+description = "Tarquin native engine — the deterministic dual-target Rule IR (v0.1)."
+
+[dependencies]
+serde.workspace = true
+serde_json.workspace = true
+sha2.workspace = true
+thiserror.workspace = true
+anyhow.workspace = true
+tarquin-sibyl.workspace = true
+
+# Backend generator + drift check (PR-003 "divergence = build failure" hook).
+[[bin]]
+name = "tarquin-engine-gen"
+path = "src/bin/gen.rs"

@@ -1,0 +1,18 @@
+{
+  "docket_format": "tarquin-docket-json/0.1",
+  "docket_ref": "docket://mx/cdmx/civil/2026/CIV-0421",
+  "case_ref": "CIV-0421/2026",
+  "court": "Juzgado Civil de la Ciudad de Mexico (example)",
+  "jurisdiction_country": "MX",
+  "legal_system_refs": ["LS-MX-STATE-01"],
+  "order": {
+    "instrument_ref": "court-order-CIV-0421-2026-07",
+    "kind": "JUD",
+    "effective_at": "2026-06-05T00:00:00Z",
+    "finality": 0,
+    "reason_code": "CO",
+    "operative_claim": "explicit_authorization",
+    "policy_claim": "HL",
+    "related_slc_artifacts": []
+  }
+}

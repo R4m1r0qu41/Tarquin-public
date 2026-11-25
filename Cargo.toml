@@ -1,0 +1,34 @@
+# Tarquin Rust workspace.
+# Built in order: tarquin-sibyl (now) -> tarquin-lex-exe -> tarquin-engine (ADR-0001).
+# Path-deps on the local Arrow crates (reuse, do NOT vendor Arrow source — AGENTS.md).
+[workspace]
+members = [
+    "crates/tarquin-sibyl",
+    "crates/tarquin-sibyl-docverify",
+    "crates/tarquin-lex-exe",
+    "crates/tarquin-engine",
+]
+resolver = "2"
+
+[workspace.package]
+edition = "2021"
+rust-version = "1.95"
+license = "Apache-2.0"
+
+[workspace.dependencies]
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+thiserror = "2"
+sha2 = "0.10"
+base64 = "0.22"
+anyhow = "1"
+# Internal crates.
+tarquin-sibyl = { path = "crates/tarquin-sibyl" }
+tarquin-engine = { path = "crates/tarquin-engine" }
+# Arrow interop (path-dependency on the sibling repo; see ADR-0001 + development-plan).
+arrow-core = { path = "../Arrow/crates/arrow-core" }
+arrow-identity = { path = "../Arrow/crates/arrow-identity" }
+arrow-origin-leg = { path = "../Arrow/crates/arrow-origin-leg" }
+arrow-consume-leg = { path = "../Arrow/crates/arrow-consume-leg" }
+arrow-transport = { path = "../Arrow/crates/arrow-transport" }
+arrow-adapter = { path = "../Arrow/crates/arrow-adapter" }

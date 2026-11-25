@@ -1,0 +1,202 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://cipherlayer.dev/tarquin/schemas/sibyl-registry.schema.json",
+  "title": "Tarquin Sibyl Registry v0.1",
+  "type": "object",
+  "required": ["registry_metadata", "entries"],
+  "additionalProperties": false,
+  "properties": {
+    "registry_metadata": {
+      "type": "object",
+      "required": ["schema_version", "registry_name", "updated_at"],
+      "additionalProperties": false,
+      "properties": {
+        "schema_version": { "const": "0.1" },
+        "registry_name": { "const": "sibyl_registry" },
+        "updated_at": { "type": "string", "format": "date-time" },
+        "notes": { "type": "string" }
+      }
+    },
+    "entries": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/sibyl" },
+      "uniqueItems": true
+    }
+  },
+  "$defs": {
+    "sibyl": {
+      "type": "object",
+      "required": [
+        "sibyl_id",
+        "did",
+        "name",
+        "authority_profile",
+        "attestation_scope",
+        "keys",
+        "status",
+        "added_at"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "sibyl_id": {
+          "type": "string",
+          "pattern": "^SBYL-[A-Z0-9-]+-[0-9]{3,}$"
+        },
+        "did": {
+          "type": "string",
+          "pattern": "^did:[a-z0-9]+:.+"
+        },
+        "name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "authority_profile": {
+          "type": "object",
+          "required": [
+            "authority_type",
+            "recognized_authority_ref",
+            "jurisdictions",
+            "source_authority_basis"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "authority_type": {
+              "type": "string",
+              "enum": [
+                "court_monitor",
+                "regulatory_monitor",
+                "official_gazette_monitor",
+                "notarial_attestor",
+                "arbitral_attestor",
+                "institutional_legal_oracle",
+                "protocol_legal_oracle",
+                "document_verification_oracle"
+              ]
+            },
+            "recognized_authority_ref": {
+              "type": "string",
+              "minLength": 1
+            },
+            "jurisdictions": {
+              "type": "array",
+              "minItems": 1,
+              "items": {
+                "type": "string",
+                "pattern": "^[A-Z0-9-]+$"
+              }
+            },
+            "legal_system_refs": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "pattern": "^LS-[A-Z0-9-]+-[0-9]{2,}$"
+              }
+            },
+            "source_authority_basis": {
+              "type": "array",
+              "minItems": 1,
+              "items": {
+                "type": "string",
+                "enum": [
+                  "official_docket",
+                  "court_order",
+                  "official_gazette",
+                  "regulatory_register",
+                  "notarial_record",
+                  "arbitral_award",
+                  "statutory_publication",
+                  "institutional_attestation",
+                  "protocol_registry"
+                ]
+              }
+            }
+          }
+        },
+        "attestation_scope": {
+          "type": "object",
+          "required": ["leg_subtypes", "max_confidence", "verification_regime"],
+          "additionalProperties": false,
+          "properties": {
+            "leg_subtypes": {
+              "type": "array",
+              "minItems": 1,
+              "items": {
+                "type": "string",
+                "enum": ["JUD", "ADM", "SUPRA", "LEG_TEXT", "PREC"]
+              }
+            },
+            "domains": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "max_confidence": {
+              "type": "string",
+              "enum": ["B", "C", "D"]
+            },
+            "verification_regime": {
+              "type": "string",
+              "enum": [
+                "structured_legal_attestation",
+                "multiple_legal_attestation",
+                "institutional_attestation"
+              ]
+            }
+          }
+        },
+        "keys": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "$ref": "#/$defs/key" }
+        },
+        "status": {
+          "type": "string",
+          "enum": ["active", "suspended", "revoked", "draft"]
+        },
+        "added_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "updated_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "notes": {
+          "type": "string"
+        }
+      }
+    },
+    "key": {
+      "type": "object",
+      "required": ["key_id", "purpose", "algorithm", "status", "valid_from"],
+      "additionalProperties": false,
+      "properties": {
+        "key_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "purpose": {
+          "type": "string",
+          "enum": ["attestation", "registry_admin", "revocation"]
+        },
+        "algorithm": {
+          "type": "string",
+          "enum": ["Ed25519", "secp256k1", "P-256"]
+        },
+        "status": {
+          "type": "string",
+          "enum": ["active", "revoked", "expired"]
+        },
+        "valid_from": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "valid_to": {
+          "type": "string",
+          "format": "date-time"
+        }
+      }
+    }
+  }
+}

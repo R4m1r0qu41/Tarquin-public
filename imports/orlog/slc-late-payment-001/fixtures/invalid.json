@@ -1,0 +1,125 @@
+{
+  "description": "Malformed inputs the logic must reject loudly (RangeError), never coerce.",
+  "cases": [
+    {
+      "case_id": "invalid-001",
+      "name": "malformed due date",
+      "terms": {
+        "principal": 100000,
+        "currency": "USD",
+        "dueDate": "2026-7-1",
+        "graceDays": 5,
+        "accrualBasis": "FROM_GRACE_EXPIRY",
+        "chargeKind": "ANNUAL_RATE",
+        "rateOrAmount": 9,
+        "capKind": "PCT_OF_REFERENCE",
+        "capValue": 5
+      },
+      "event": {
+        "paidDate": "2026-07-21",
+        "amountPaid": 100000
+      },
+      "expectErrorMatch": "invalid ISO date"
+    },
+    {
+      "case_id": "invalid-002",
+      "name": "impossible calendar date",
+      "terms": {
+        "principal": 100000,
+        "currency": "USD",
+        "dueDate": "2026-02-30",
+        "graceDays": 5,
+        "accrualBasis": "FROM_GRACE_EXPIRY",
+        "chargeKind": "ANNUAL_RATE",
+        "rateOrAmount": 9,
+        "capKind": "PCT_OF_REFERENCE",
+        "capValue": 5
+      },
+      "event": {
+        "paidDate": "2026-07-21",
+        "amountPaid": 100000
+      },
+      "expectErrorMatch": "impossible calendar date"
+    },
+    {
+      "case_id": "invalid-003",
+      "name": "negative principal",
+      "terms": {
+        "principal": -1,
+        "currency": "USD",
+        "dueDate": "2026-07-01",
+        "graceDays": 5,
+        "accrualBasis": "FROM_GRACE_EXPIRY",
+        "chargeKind": "ANNUAL_RATE",
+        "rateOrAmount": 9,
+        "capKind": "PCT_OF_REFERENCE",
+        "capValue": 5
+      },
+      "event": {
+        "paidDate": "2026-07-21",
+        "amountPaid": 100000
+      },
+      "expectErrorMatch": "principal"
+    },
+    {
+      "case_id": "invalid-004",
+      "name": "negative grace days",
+      "terms": {
+        "principal": 100000,
+        "currency": "USD",
+        "dueDate": "2026-07-01",
+        "graceDays": -3,
+        "accrualBasis": "FROM_GRACE_EXPIRY",
+        "chargeKind": "ANNUAL_RATE",
+        "rateOrAmount": 9,
+        "capKind": "PCT_OF_REFERENCE",
+        "capValue": 5
+      },
+      "event": {
+        "paidDate": "2026-07-21",
+        "amountPaid": 100000
+      },
+      "expectErrorMatch": "graceDays"
+    },
+    {
+      "case_id": "invalid-005",
+      "name": "negative rate",
+      "terms": {
+        "principal": 100000,
+        "currency": "USD",
+        "dueDate": "2026-07-01",
+        "graceDays": 5,
+        "accrualBasis": "FROM_GRACE_EXPIRY",
+        "chargeKind": "ANNUAL_RATE",
+        "rateOrAmount": -9,
+        "capKind": "PCT_OF_REFERENCE",
+        "capValue": 5
+      },
+      "event": {
+        "paidDate": "2026-07-21",
+        "amountPaid": 100000
+      },
+      "expectErrorMatch": "rateOrAmount"
+    },
+    {
+      "case_id": "invalid-006",
+      "name": "partial payment is out of scope",
+      "terms": {
+        "principal": 100000,
+        "currency": "USD",
+        "dueDate": "2026-07-01",
+        "graceDays": 5,
+        "accrualBasis": "FROM_GRACE_EXPIRY",
+        "chargeKind": "ANNUAL_RATE",
+        "rateOrAmount": 9,
+        "capKind": "PCT_OF_REFERENCE",
+        "capValue": 5
+      },
+      "event": {
+        "paidDate": "2026-07-21",
+        "amountPaid": 50000
+      },
+      "expectErrorMatch": "payment-in-full"
+    }
+  ]
+}

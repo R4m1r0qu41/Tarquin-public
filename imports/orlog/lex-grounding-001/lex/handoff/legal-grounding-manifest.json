@@ -1,0 +1,246 @@
+{
+  "bundle_id": "lex-grounding-001",
+  "version": "0.1.0",
+  "sealed_at": "2026-07-07",
+  "sealed_from_commit": "b5db99e20127f3e81f630a29ae036826786e414e",
+  "jurisdictions": [
+    "GENERAL",
+    "MX",
+    "US"
+  ],
+  "hash_convention": "MC-006: SHA-256 over every included node file in sorted path order; path and payload NUL-separated; this manifest included last after deleting bundle_hash and serializing with sorted keys (JSON, 2-space indent, trailing newline).",
+  "nodes": [
+    {
+      "id": "concept-accredited-investor",
+      "path": "lex/concepts/concept-accredited-investor.md",
+      "status": "verified",
+      "source_hash": "sha256:a54a63376aa3e8a20b053759ebda57d7ed371a373794351ba299292f11b08b1a",
+      "file_hash": "sha256:2e1df305bc4b149c5e99be3fcad51a91941898610db796fe94cb607e12a3d985"
+    },
+    {
+      "id": "concept-distribution-compliance-period",
+      "path": "lex/concepts/concept-distribution-compliance-period.md",
+      "status": "verified",
+      "source_hash": "sha256:143fcacf5eedb4c65ae3feb336ef74b5146b0f427e7c17a9f4000f57bd92388f",
+      "file_hash": "sha256:95f25288f4afed524907d06da3019c7d959d0d7f419a9565bb331a1285c7f455"
+    },
+    {
+      "id": "concept-offshore-transaction",
+      "path": "lex/concepts/concept-offshore-transaction.md",
+      "status": "verified",
+      "source_hash": "sha256:143fcacf5eedb4c65ae3feb336ef74b5146b0f427e7c17a9f4000f57bd92388f",
+      "file_hash": "sha256:99499835996c1faf8e540a3ebe6966f2bd7246b36c4a9234c3bcbc672c50dd8b"
+    },
+    {
+      "id": "concept-qualified-purchaser",
+      "path": "lex/concepts/concept-qualified-purchaser.md",
+      "status": "verified",
+      "source_hash": "sha256:e1f11395bb669bb7c1e7dea60669362c0396de5bff3685a63f1e22ba63f8d8e2",
+      "file_hash": "sha256:4748e1ed8ec3034643a1ddc0d043229b5dd335e4651fac84caba91846cf54fc8"
+    },
+    {
+      "id": "concept-restricted-securities",
+      "path": "lex/concepts/concept-restricted-securities.md",
+      "status": "verified",
+      "source_hash": "sha256:326362c227a3b72f473acef7e3df454e63a76ebdaa1fdef7f79b0b117169e89e",
+      "file_hash": "sha256:05dc93b820feb97d3af022b54d4ebf3a52962b1ae48c249d5c06cc7e86684446"
+    },
+    {
+      "id": "concept-us-person",
+      "path": "lex/concepts/concept-us-person.md",
+      "status": "verified",
+      "source_hash": "sha256:143fcacf5eedb4c65ae3feb336ef74b5146b0f427e7c17a9f4000f57bd92388f",
+      "file_hash": "sha256:355e14d1fdb72e8f33d013bff4409723415d2e4e97db8985b8ed65868818b681"
+    },
+    {
+      "id": "lex-mx-ccf-1840",
+      "path": "lex/jurisdictions/mx/lex-mx-ccf-1840.md",
+      "status": "verified",
+      "source_hash": "sha256:4d4090f60137ce0d82bf321c24c962f698c407910fc94ebeb34b49d0a4236a76",
+      "file_hash": "sha256:79c4c3037b184f9dc8c25af1734efb617f7bc9afbfaae01b8b70a9bf5715a9bf"
+    },
+    {
+      "id": "lex-mx-ccom-89",
+      "path": "lex/jurisdictions/mx/lex-mx-ccom-89.md",
+      "status": "verified",
+      "source_hash": "sha256:b99bbf981434011b6351ef308922fea90f6f0f8777b113183cf1737840c5bbef",
+      "file_hash": "sha256:8c9cdf793330c26312fafb5431579ea4e0be8d95391c83e9520fb8e27c3a1104"
+    },
+    {
+      "id": "lex-mx-lfea-7",
+      "path": "lex/jurisdictions/mx/lex-mx-lfea-7.md",
+      "status": "verified",
+      "source_hash": "sha256:102031c59185ac31397dbd722281bc02046fd4f5db4af7fb9348ffeddcbb2842",
+      "file_hash": "sha256:8c5ccffe864a19c57805cf3eb7f8f4d190fc361a7b45faa86dcd5993edc7e846"
+    },
+    {
+      "id": "lex-us-15usc-7001",
+      "path": "lex/jurisdictions/us/lex-us-15usc-7001.md",
+      "status": "verified",
+      "source_hash": "sha256:ef6d87b442952dcc348c41e8163d6b10fef603d1913726c372a83bad3cca43a5",
+      "file_hash": "sha256:77348b06a70b77373168477fa8ddda92b6d00b95f639caf603354ebfbba814c8"
+    },
+    {
+      "id": "lex-us-15usc-77b",
+      "path": "lex/jurisdictions/us/lex-us-15usc-77b.md",
+      "status": "verified",
+      "source_hash": "sha256:efbaaf56471f098debd65e7847e33c01ce568ab0541ead0a38e3d57b1fe6e828",
+      "file_hash": "sha256:a710506464c196150be53d9241af7634da58ce8fdff35ed927a097c2cabe3b50"
+    },
+    {
+      "id": "lex-us-15usc-77d",
+      "path": "lex/jurisdictions/us/lex-us-15usc-77d.md",
+      "status": "verified",
+      "source_hash": "sha256:f7d9bccb12ce455c34e67aa599ca6860ee83cbebd4a5c7cecc6a6abdfbb83891",
+      "file_hash": "sha256:78ed21a4fdeb26da9dff899a40e43c218bba91955f2bb722a8653c7262697c5a"
+    },
+    {
+      "id": "lex-us-15usc-77e",
+      "path": "lex/jurisdictions/us/lex-us-15usc-77e.md",
+      "status": "verified",
+      "source_hash": "sha256:7d893ead2b0c0b7030c73744f901cdb39c2ecaf386ed745c6d40daf4d79217d2",
+      "file_hash": "sha256:7e5f2d0ecc32b62abc253329d1cbeeb754b1dc3d5a228159530ed8682d1dcf5d"
+    },
+    {
+      "id": "lex-us-15usc-80a-2",
+      "path": "lex/jurisdictions/us/lex-us-15usc-80a-2.md",
+      "status": "verified",
+      "source_hash": "sha256:e1f11395bb669bb7c1e7dea60669362c0396de5bff3685a63f1e22ba63f8d8e2",
+      "file_hash": "sha256:992d214ff5ce3657fbc3b9245771c918a8c28060f2afd3ceb23e4b0198767e53"
+    },
+    {
+      "id": "lex-us-15usc-80a-3",
+      "path": "lex/jurisdictions/us/lex-us-15usc-80a-3.md",
+      "status": "verified",
+      "source_hash": "sha256:d5d0795cc235cbe23f4fefe1567e2cdf64ebce827c96dd163ce501fccbb39158",
+      "file_hash": "sha256:a997ce2c04387b4e1508834bf3783b36e1567af6e3b393cf79386d1d6d081703"
+    },
+    {
+      "id": "lex-us-17cfr-230-251",
+      "path": "lex/jurisdictions/us/lex-us-17cfr-230-251.md",
+      "status": "verified",
+      "source_hash": "sha256:63e92e55ba33bce9dc3a856c44ebb3d9289cf5169c9a643ea13ca8a4776060f9",
+      "file_hash": "sha256:5fa766a7f21bfbd6e5900e5d3424d0c820f79c7cf2ca1112e1210fbd0bf3491f"
+    },
+    {
+      "id": "lex-us-17cfr-230-501",
+      "path": "lex/jurisdictions/us/lex-us-17cfr-230-501.md",
+      "status": "verified",
+      "source_hash": "sha256:a54a63376aa3e8a20b053759ebda57d7ed371a373794351ba299292f11b08b1a",
+      "file_hash": "sha256:784b7e4836d8281c24d559ededb09a15b6d0be33751bfbe29965c80248208123"
+    },
+    {
+      "id": "lex-us-17cfr-230-502",
+      "path": "lex/jurisdictions/us/lex-us-17cfr-230-502.md",
+      "status": "verified",
+      "source_hash": "sha256:326362c227a3b72f473acef7e3df454e63a76ebdaa1fdef7f79b0b117169e89e",
+      "file_hash": "sha256:f5989e52a1cbb18f79a59c4ce82102ccfa29a9e3f53f82098d4aef9ac6e32ff2"
+    },
+    {
+      "id": "lex-us-17cfr-230-506",
+      "path": "lex/jurisdictions/us/lex-us-17cfr-230-506.md",
+      "status": "verified",
+      "source_hash": "sha256:a2a0c7f692dd443647e7a26684805ff87f5475cbce09345bb8b026ae122256cb",
+      "file_hash": "sha256:85f351ef18789182ac87a34a9dfb180c47c3023946447634e809ee76d9507e14"
+    },
+    {
+      "id": "lex-us-17cfr-230-901",
+      "path": "lex/jurisdictions/us/lex-us-17cfr-230-901.md",
+      "status": "verified",
+      "source_hash": "sha256:b8c4b92b644dc68d132563c3876a75acf449b54f065678dee0551eb7a6eed37d",
+      "file_hash": "sha256:cbba01ad7be2a5d23ca616da060eef967e8049a1097dee382f54a9f58d202897"
+    },
+    {
+      "id": "lex-us-17cfr-230-902",
+      "path": "lex/jurisdictions/us/lex-us-17cfr-230-902.md",
+      "status": "verified",
+      "source_hash": "sha256:143fcacf5eedb4c65ae3feb336ef74b5146b0f427e7c17a9f4000f57bd92388f",
+      "file_hash": "sha256:ea5d6a1674ded9bdfad446d632dbcececefa1cce3823c4d81e8bdcfca41cdde0"
+    },
+    {
+      "id": "lex-us-17cfr-230-903",
+      "path": "lex/jurisdictions/us/lex-us-17cfr-230-903.md",
+      "status": "verified",
+      "source_hash": "sha256:a6128c0c67f093013bf1bf340e23eaaa927b35693a0133f016ba984ffb29f8ce",
+      "file_hash": "sha256:dbb5992fe1e543fe3ddfbcaca2da95baaaa4f0f21a641ef74017231c16230abb"
+    },
+    {
+      "id": "lex-us-17cfr-230-904",
+      "path": "lex/jurisdictions/us/lex-us-17cfr-230-904.md",
+      "status": "verified",
+      "source_hash": "sha256:9f88a567d23557dabac2b165245a9ae514fae921745f428b921ba7a375bd0142",
+      "file_hash": "sha256:a45021e88f677fb70746f1c1c5171ead9891cfb4c5c769e186dc14bbbdcf2bee"
+    },
+    {
+      "id": "lex-us-17cfr-230-905",
+      "path": "lex/jurisdictions/us/lex-us-17cfr-230-905.md",
+      "status": "verified",
+      "source_hash": "sha256:11019f70d645992798e5e3811a0381676bf98cd4e891c908be6d13164b522faa",
+      "file_hash": "sha256:ba56026e0b2c949984a6146e3c380b456e80ccf506f248eacbdc3a76d8384bec"
+    },
+    {
+      "id": "lex-us-ny-cplr-4539",
+      "path": "lex/jurisdictions/us/lex-us-ny-cplr-4539.md",
+      "status": "verified",
+      "source_hash": "sha256:d392824ebae82d582eaa0b1881edd002abc3884bdc1b2dc189dee4ddd60ca143",
+      "file_hash": "sha256:206f794fe0eb1ffc5ece39c33543be41ce42e7e6b635d8d55731f5dca182de64"
+    },
+    {
+      "id": "lex-us-ny-cplr-5004",
+      "path": "lex/jurisdictions/us/lex-us-ny-cplr-5004.md",
+      "status": "verified",
+      "source_hash": "sha256:b6568e96cb9c41fe710b5b8b889a52a461d4486f25a3172a47b2a5589ee1a22a",
+      "file_hash": "sha256:73a68480ba48dbf45a8c5226b1fd8890c4b288a993f750f8b1732196204fc63d"
+    },
+    {
+      "id": "lex-us-ny-gol-5-501",
+      "path": "lex/jurisdictions/us/lex-us-ny-gol-5-501.md",
+      "status": "verified",
+      "source_hash": "sha256:dd1b2daa7b5d9baa3820f76eff1e59831d58969b8ebea586a173c669be27e3bb",
+      "file_hash": "sha256:ca58514435da71a12b8da5dd54e7cd2149b93e9bfeb6b9e70dac3452410b529a"
+    },
+    {
+      "id": "lex-us-ny-stt-304",
+      "path": "lex/jurisdictions/us/lex-us-ny-stt-304.md",
+      "status": "verified",
+      "source_hash": "sha256:5bc84f8b64e185fc77e65fa4648b6771b0417a91d393d17106901e32b841ccf8",
+      "file_hash": "sha256:b1261e616ea9c1e4105e1e503438324b566786c4f0996691cd8d8f43df2b6c1c"
+    },
+    {
+      "id": "lex-us-ny-ucc-2-601",
+      "path": "lex/jurisdictions/us/lex-us-ny-ucc-2-601.md",
+      "status": "verified",
+      "source_hash": "sha256:68095928e1282165fcf579ecc44f3cb47b318a57343cc8408c183de83477df0c",
+      "file_hash": "sha256:dc31c855f0e920e62df7ae5223ae1dc8d8bb31d59abf0093ff69392559d008d2"
+    },
+    {
+      "id": "lex-us-ny-ucc-2-718",
+      "path": "lex/jurisdictions/us/lex-us-ny-ucc-2-718.md",
+      "status": "verified",
+      "source_hash": "sha256:af7f76b24fc18a4610043363ab73661133746a60a9777e8b7447ade9f4cb67f1",
+      "file_hash": "sha256:f4716d5261c7ca5f1ffb0074e016fa8798e7dd0c3a06f01ae3cfb3cdc9e42dc2"
+    },
+    {
+      "id": "lex-us-ny-ucc-2-719",
+      "path": "lex/jurisdictions/us/lex-us-ny-ucc-2-719.md",
+      "status": "verified",
+      "source_hash": "sha256:1cc336716bfbce9693e50e86a4243091e1fe34dc54dbc07523e490387d37b0c0",
+      "file_hash": "sha256:0af27db29a5e046e4e058bd2fb47391cc07573af3774372eebe5516ba65e3123"
+    },
+    {
+      "id": "lex-us-ny-ucc-3-104",
+      "path": "lex/jurisdictions/us/lex-us-ny-ucc-3-104.md",
+      "status": "verified",
+      "source_hash": "sha256:0b9f45a21e3a1dbd257ca3562a2eed5e926b75d51544407132a12f33b361bc31",
+      "file_hash": "sha256:0d222683d0797d1ae5ae12f4bdf0b8804f3412611d7f04aebb8818f77d0dccfc"
+    },
+    {
+      "id": "lex-us-ny-ucc-3-112",
+      "path": "lex/jurisdictions/us/lex-us-ny-ucc-3-112.md",
+      "status": "verified",
+      "source_hash": "sha256:098f0fe2df7f3259739d5f59d2cd53c36bc90b86e2c25de548f4013db0b8396c",
+      "file_hash": "sha256:8112749e24fd8c721152837026fac9a6186241d93bd16b40ab5dbd5ca4d9ae44"
+    }
+  ],
+  "bundle_hash": "sha256:fb2d2e099629c23a730267b51c331ce38df7f9732392647f400d6e378a6b131f"
+}

@@ -1,0 +1,39 @@
+{
+  "description": "Computation is agreed and deterministic; the legal entitlement is contested. Downstream consumers must not treat the computed number as a settled claim.",
+  "cases": [
+    {
+      "case_id": "disputed-001",
+      "name": "high rate challenged as penalty under UCC 2-718",
+      "terms": {
+        "principal": 100000,
+        "currency": "USD",
+        "dueDate": "2026-07-01",
+        "graceDays": 0,
+        "accrualBasis": "FROM_DUE_DATE",
+        "chargeKind": "ANNUAL_RATE",
+        "rateOrAmount": 36,
+        "capKind": "PCT_OF_REFERENCE",
+        "capValue": 10
+      },
+      "event": {
+        "paidDate": "2026-08-30",
+        "amountPaid": 100000
+      },
+      "expected": {
+        "daysLate": 60,
+        "chargeableDays": 60,
+        "lateCharge": 5917.81,
+        "capped": false,
+        "totalDue": 105917.81,
+        "obligation": "LATE_CHARGE_DUE"
+      },
+      "dispute": {
+        "status": "contested",
+        "contention": "Payer contends the 36% per-annum charge is an unenforceable penalty rather than a reasonable liquidation (lex-us-ny-ucc-2-718); payee contends it reflects anticipated financing cost.",
+        "computationContested": false,
+        "entitlementContested": true,
+        "requiresHumanReview": true
+      }
+    }
+  ]
+}

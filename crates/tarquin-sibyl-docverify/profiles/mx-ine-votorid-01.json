@@ -1,0 +1,10 @@
+{
+  "id": "MX-INE-VOTORID-01",
+  "display_name": "INE — Credencial para Votar",
+  "description": "Credencial para Votar con fotografía emitida por el Instituto Nacional Electoral.",
+  "expected_media_type": "image",
+  "requires_qr": false,
+  "expected_qr_class": null,
+  "lex_refs": ["lex-mx-ccom-89"],
+  "profile_hash": "sha256:75f17d393301d75a004cb596c4003c4a2bba1053b8f89477a213a4c2b3d976ce"
+}

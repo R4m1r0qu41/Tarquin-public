@@ -1,0 +1,158 @@
+[
+  {
+    "name": "pr_full_gate",
+    "inputs": {
+      "leg_subtype": "JUD",
+      "finality": 1,
+      "reason_code": "CO",
+      "verification_regime": "structured_legal_attestation",
+      "sibyl_registered_active": true,
+      "proof_instrument_specific": true,
+      "lexcodex_permits_pr": true
+    },
+    "expected": { "action": "PR", "forced": false, "rule": "ENG-PR-ELEVATION" }
+  },
+  {
+    "name": "pr_gate_under_appeal_fails_closed",
+    "inputs": {
+      "leg_subtype": "JUD",
+      "finality": 0,
+      "reason_code": "CO",
+      "verification_regime": "structured_legal_attestation",
+      "sibyl_registered_active": true,
+      "proof_instrument_specific": true,
+      "lexcodex_permits_pr": true
+    },
+    "expected": { "action": "HL", "forced": false, "rule": "ENG-DEFAULT-HL" }
+  },
+  {
+    "name": "pr_gate_proof_not_instrument_specific",
+    "inputs": {
+      "leg_subtype": "JUD",
+      "finality": 1,
+      "reason_code": "CO",
+      "verification_regime": "structured_legal_attestation",
+      "sibyl_registered_active": true,
+      "proof_instrument_specific": false,
+      "lexcodex_permits_pr": true
+    },
+    "expected": { "action": "HL", "forced": false, "rule": "ENG-DEFAULT-HL" }
+  },
+  {
+    "name": "pr_gate_sibyl_not_active",
+    "inputs": {
+      "leg_subtype": "JUD",
+      "finality": 1,
+      "reason_code": "CO",
+      "verification_regime": "structured_legal_attestation",
+      "sibyl_registered_active": false,
+      "proof_instrument_specific": true,
+      "lexcodex_permits_pr": true
+    },
+    "expected": { "action": "HL", "forced": false, "rule": "ENG-DEFAULT-HL" }
+  },
+  {
+    "name": "pr_gate_lexcodex_veto",
+    "inputs": {
+      "leg_subtype": "JUD",
+      "finality": 1,
+      "reason_code": "CO",
+      "verification_regime": "structured_legal_attestation",
+      "sibyl_registered_active": true,
+      "proof_instrument_specific": true,
+      "lexcodex_permits_pr": false
+    },
+    "expected": { "action": "HL", "forced": false, "rule": "ENG-DEFAULT-HL" }
+  },
+  {
+    "name": "pr_gate_institutional_regime_fails_closed",
+    "inputs": {
+      "leg_subtype": "JUD",
+      "finality": 1,
+      "reason_code": "CO",
+      "verification_regime": "institutional_attestation",
+      "sibyl_registered_active": true,
+      "proof_instrument_specific": true,
+      "lexcodex_permits_pr": true
+    },
+    "expected": { "action": "HL", "forced": false, "rule": "ENG-DEFAULT-HL" }
+  },
+  {
+    "name": "supra_sanctions_force_block",
+    "inputs": {
+      "leg_subtype": "SUPRA",
+      "finality": 1,
+      "reason_code": "SA",
+      "verification_regime": "institutional_attestation",
+      "sibyl_registered_active": false,
+      "proof_instrument_specific": false,
+      "lexcodex_permits_pr": false
+    },
+    "expected": { "action": "BL", "forced": true, "rule": "ENG-SUPRA-SA-BL" }
+  },
+  {
+    "name": "forced_block_beats_satisfied_pr_gate",
+    "inputs": {
+      "leg_subtype": "SUPRA",
+      "finality": 1,
+      "reason_code": "SA",
+      "verification_regime": "structured_legal_attestation",
+      "sibyl_registered_active": true,
+      "proof_instrument_specific": true,
+      "lexcodex_permits_pr": true
+    },
+    "expected": { "action": "BL", "forced": true, "rule": "ENG-SUPRA-SA-BL" }
+  },
+  {
+    "name": "supra_sanctions_under_appeal_fails_closed",
+    "inputs": {
+      "leg_subtype": "SUPRA",
+      "finality": 0,
+      "reason_code": "SA",
+      "verification_regime": "structured_legal_attestation",
+      "sibyl_registered_active": true,
+      "proof_instrument_specific": true,
+      "lexcodex_permits_pr": true
+    },
+    "expected": { "action": "HL", "forced": false, "rule": "ENG-DEFAULT-HL" }
+  },
+  {
+    "name": "jud_sanctions_reason_does_not_force_block",
+    "inputs": {
+      "leg_subtype": "JUD",
+      "finality": 1,
+      "reason_code": "SA",
+      "verification_regime": "structured_legal_attestation",
+      "sibyl_registered_active": true,
+      "proof_instrument_specific": true,
+      "lexcodex_permits_pr": true
+    },
+    "expected": { "action": "PR", "forced": false, "rule": "ENG-PR-ELEVATION" }
+  },
+  {
+    "name": "supra_non_sanctions_full_gate_is_pr",
+    "inputs": {
+      "leg_subtype": "SUPRA",
+      "finality": 1,
+      "reason_code": "CO",
+      "verification_regime": "structured_legal_attestation",
+      "sibyl_registered_active": true,
+      "proof_instrument_specific": true,
+      "lexcodex_permits_pr": true
+    },
+    "expected": { "action": "PR", "forced": false, "rule": "ENG-PR-ELEVATION" }
+  },
+  {
+    "name": "nothing_matches_defaults_hl",
+    "inputs": {
+      "leg_subtype": "ADM",
+      "finality": 0,
+      "reason_code": "LR",
+      "verification_regime": "institutional_attestation",
+      "sibyl_registered_active": false,
+      "proof_instrument_specific": false,
+      "lexcodex_permits_pr": false
+    },
+    "expected": { "action": "HL", "forced": false, "rule": "ENG-DEFAULT-HL" }
+  }
+]

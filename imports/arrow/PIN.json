@@ -1,0 +1,22 @@
+{
+  "pin_schema_version": "0.1",
+  "description": "Pinned Arrow protocol-surface artifacts consumed by Tarquin. Build-time metadata only; Tarquin continues to use Arrow crates through Cargo path dependencies and does not vendor Arrow source.",
+  "source_repo": "Dev/Arrow",
+  "arrow_compatibility": {
+    "baseline": "arrow-v1.6.0",
+    "protocol_release": "1.6.0",
+    "compatibility_role": "consumer"
+  },
+  "pins": [
+    {
+      "artifact": "arrow-rule-surface",
+      "version": "1.6.0",
+      "baseline": "arrow-v1.6.0",
+      "source_commit": "967a13ac31ca378f4be24db8f043252f3c842e9a",
+      "source_path": "exports/rule-surface.v1.6.0.json",
+      "hash": "sha256:347299b13271b846485d309fc7ff334810f92233c0a0130415381e9b74d9dcbb",
+      "pinned_at": "2026-07-07",
+      "purpose": "Pins Arrow rule IDs, semantic slugs, Action/Class namespace entries, and LEG reason-code surface used by Tarquin's LEG adapter, consumer, and parity artifacts. Re-pinned 2026-07-07 (RFC-010 implementation): TRG-001 and LFC-007 flip to live, LFC-008 (closure_expectation_declaration) added live. SEM-015/FB-001 pins from the 2026-07-06 re-pin retained."
+    }
+  ]
+}

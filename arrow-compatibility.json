@@ -1,0 +1,23 @@
+{
+  "manifest_schema_version": "0.1",
+  "repository": "Tarquin",
+  "repository_role": "legal_runtime_and_arrow_leg_adapter_consumer",
+  "arrow_compatibility": {
+    "baseline": "arrow-v1.6.0",
+    "protocol_release": "1.6.0",
+    "compatibility_role": "implementation_and_consumer",
+    "authority_source": "Dev/Arrow/exports/rule-surface.v1.6.0.json",
+    "pin_manifest": "imports/arrow/PIN.json"
+  },
+  "separate_from_tarquin_versions": {
+    "cargo_workspace": "Cargo.toml",
+    "tarquin_specs": "specs/*",
+    "tarquin_runtime_contracts": ["lex-exe/*", "SBL-9/*"],
+    "engine_artifacts": "exports/engine/*"
+  },
+  "constraints": [
+    "Tarquin does not independently version Arrow protocol semantics.",
+    "Tarquin consumes Arrow rule and registry semantics through Arrow-owned artifacts and path dependencies.",
+    "Tarquin may maintain its own software, runtime-contract, SLC-import, and engine artifact versions separately from Arrow compatibility."
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "id": "MX-RENAPO-CURP-01",
+  "display_name": "RENAPO — Constancia CURP",
+  "description": "Constancia de Clave Única de Registro de Población (CURP) emitida por RENAPO.",
+  "expected_media_type": "image",
+  "requires_qr": true,
+  "expected_qr_class": "MexicoCurp",
+  "lex_refs": ["lex-mx-ccom-89", "lex-mx-lfea-7"],
+  "profile_hash": "sha256:ae48d53c4a41e2955e803901f21eb60cc20acfb089db2e74923bdc982576e4b5"
+}

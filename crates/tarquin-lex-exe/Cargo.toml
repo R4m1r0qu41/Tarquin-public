@@ -1,0 +1,32 @@
+[package]
+name = "tarquin-lex-exe"
+version = "0.1.0"
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+description = "Tarquin Lex.exe — drives the Arrow LEG boundary: emit (origin) and consume (review)."
+
+[dependencies]
+thiserror.workspace = true
+anyhow.workspace = true
+serde.workspace = true
+serde_json.workspace = true
+base64.workspace = true
+chrono = "0.4"
+tarquin-sibyl.workspace = true
+tarquin-engine.workspace = true
+arrow-core.workspace = true
+sha2.workspace = true
+arrow-identity.workspace = true
+arrow-origin-leg.workspace = true
+arrow-consume-leg.workspace = true
+arrow-transport.workspace = true
+arrow-adapter.workspace = true
+
+[dev-dependencies]
+tempfile = "3"
+
+# Runnable Sibyl driver (Phase 3 vertical slice as a CLI): keygen / attest / emit / slice.
+[[bin]]
+name = "sibyl"
+path = "src/bin/sibyl.rs"

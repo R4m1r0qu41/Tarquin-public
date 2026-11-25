@@ -1,0 +1,41 @@
+{
+  "registry_metadata": {
+    "schema_version": "0.1",
+    "registry_name": "sibyl_registry",
+    "updated_at": "2026-06-07T00:00:00Z",
+    "notes": "Draft example. Not production authority data."
+  },
+  "entries": [
+    {
+      "sibyl_id": "SBYL-MX-COURT-001",
+      "did": "did:example:sibyl-mx-court-001",
+      "name": "Example Mexican Court Monitor",
+      "authority_profile": {
+        "authority_type": "court_monitor",
+        "recognized_authority_ref": "RFC007B-EXAMPLE-001",
+        "jurisdictions": ["MX"],
+        "legal_system_refs": ["LS-MX-STATE-01"],
+        "source_authority_basis": ["official_docket", "court_order"]
+      },
+      "attestation_scope": {
+        "leg_subtypes": ["JUD"],
+        "domains": ["digital_assets", "cross_border_settlement"],
+        "max_confidence": "C",
+        "verification_regime": "structured_legal_attestation"
+      },
+      "keys": [
+        {
+          "key_id": "did:example:sibyl-mx-court-001#attestation-1",
+          "purpose": "attestation",
+          "algorithm": "Ed25519",
+          "status": "active",
+          "valid_from": "2026-06-07T00:00:00Z"
+        }
+      ],
+      "status": "draft",
+      "added_at": "2026-06-07T00:00:00Z",
+      "notes": "Example profile only."
+    }
+  ]
+}
+

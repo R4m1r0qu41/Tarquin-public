@@ -1,0 +1,10 @@
+{
+  "id": "MX-JUZGADO-OFICIO-01",
+  "display_name": "Juzgado — Oficio Judicial",
+  "description": "Oficio o resolución emitida por un juzgado federal o local en México, en formato PDF con firma digital.",
+  "expected_media_type": "pdf",
+  "requires_qr": false,
+  "expected_qr_class": null,
+  "lex_refs": ["lex-mx-ccom-89"],
+  "profile_hash": "sha256:c8b64ef3cbb19cbac33ed402f6e0f80efcc1a664f6c9b44e88c759de51e23991"
+}

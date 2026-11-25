@@ -1,0 +1,10 @@
+{
+  "id": "MX-SAT-CFDI-01",
+  "display_name": "SAT — Comprobante Fiscal Digital por Internet (CFDI)",
+  "description": "Factura electrónica CFDI 4.0 emitida por el SAT; típicamente en PDF con QR de verificación.",
+  "expected_media_type": "pdf",
+  "requires_qr": true,
+  "expected_qr_class": "MexicoCfdiUrl",
+  "lex_refs": ["lex-mx-ccom-89", "lex-mx-lfea-7"],
+  "profile_hash": "sha256:88efc1f5eb0b94598adff9dd7a442f6f97cb80633aa377e6a42613b12d3f5675"
+}

@@ -1,0 +1,10 @@
+{
+  "id": "MX-SAT-RFC-01",
+  "display_name": "SAT — Cédula de Identificación Fiscal (RFC)",
+  "description": "Cédula fiscal del Registro Federal de Contribuyentes emitida por el SAT.",
+  "expected_media_type": "any",
+  "requires_qr": false,
+  "expected_qr_class": null,
+  "lex_refs": ["lex-mx-ccom-89", "lex-mx-lfea-7"],
+  "profile_hash": "sha256:4c8243dab16527a04bb5291e0c6a45fde3c02e03d0336429b576f54172e23507"
+}

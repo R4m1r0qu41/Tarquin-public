@@ -1,0 +1,20 @@
+{
+  "$comment": "Sample instance data for org.contractlabs.latepayment@0.1.0",
+  "terms": {
+    "payer": { "name": "Acme Distribución S.A." },
+    "payee": { "name": "Northline Components LLC" },
+    "principal": 100000.0,
+    "currency": "USD",
+    "dueDate": "2026-07-01",
+    "graceDays": 5,
+    "accrualBasis": "FROM_GRACE_EXPIRY",
+    "chargeKind": "ANNUAL_RATE",
+    "rateOrAmount": 9.0,
+    "capKind": "PCT_OF_REFERENCE",
+    "capValue": 5.0
+  },
+  "event": {
+    "paidDate": "2026-07-21",
+    "amountPaid": 100000.0
+  }
+}

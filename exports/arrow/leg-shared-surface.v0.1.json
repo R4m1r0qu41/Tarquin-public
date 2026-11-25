@@ -1,0 +1,214 @@
+{
+  "schema_version": "0.1",
+  "artifact": "tarquin-arrow-leg-shared-surface",
+  "owner": "Tarquin",
+  "status": "draft",
+  "description": "Tarquin-owned LEG shared surface for Arrow import/check. This artifact is a build-time contract, not a runtime dependency.",
+  "generated_from": [
+    "specs/leg-origin-amendment-v0.1.md",
+    "specs/leg-jurisdiction-addendum-v0.1.md",
+    "specs/legal-system-foundation-v0.1.md",
+    "lex-exe/leg-origin-adapter-v0.1.md",
+    "lex-exe/leg-consumer-v0.1.md",
+    "SBL-9/lbry-legal-attestation-v0.1.md",
+    "drafts/sibyl/sibyl-registry.schema.json",
+    "drafts/architecture/RFC-008-action-policy-disentanglement-v0.1.md",
+    "drafts/architecture/RFC-009-tr-cl-action-semantics-v0.1.md",
+    "crates/tarquin-engine/src/rules.rs",
+    "exports/engine/ruleset.json"
+  ],
+  "canonical_field_4": {
+    "canonical_name": "Action",
+    "compatibility_alias": "Policy",
+    "wire_position": 4,
+    "status": "semantic_rename_rfc_scoped",
+    "notes": "The wire shape and codes are unchanged for v0.1. New prose should use Action; Policy remains a compatibility alias for current Arrow field/type names."
+  },
+  "class_terminology": [
+    {
+      "class": 4,
+      "canonical_name": "CONTROL",
+      "compact_alias": "CTR",
+      "legacy_name": "POLICY",
+      "status": "semantic_rename_rfc_scoped",
+      "notes": "Class 4 is a control-plane event class, not the Action field and not Origin PCY."
+    }
+  ],
+  "origins": [
+    {
+      "code": "PCY",
+      "name": "policy_governance_origin",
+      "status": "unchanged",
+      "notes": "PCY remains the governance/policy source domain. It is not renamed by the Action transition."
+    }
+  ],
+  "actions": [
+    { "code": "BL", "name": "block" },
+    { "code": "HL", "name": "hold" },
+    { "code": "RW", "name": "review_or_rework" },
+    {
+      "code": "TR",
+      "name": "trigger",
+      "status": "rfc_scoped_before_implementation",
+      "notes": "Trigger semantics are scoped by RFC-009. Do not treat TR as generic PR or as proof of transfer by itself."
+    },
+    {
+      "code": "CL",
+      "name": "closed",
+      "status": "rfc_scoped_before_implementation",
+      "notes": "Closed semantics are scoped by RFC-009. Class 6 pairing and finality/reversal behavior remain unresolved."
+    },
+    { "code": "PR", "name": "proceed" }
+  ],
+  "policy_alias": {
+    "compatibility_alias_for": "actions",
+    "status": "legacy_alias",
+    "notes": "Retained for Arrow compatibility while field 4 migrates from Policy to Action."
+  },
+  "policies": [
+    { "code": "BL", "name": "block" },
+    { "code": "HL", "name": "hold" },
+    { "code": "RW", "name": "review_or_rework" },
+    {
+      "code": "TR",
+      "name": "trigger",
+      "status": "rfc_scoped_before_implementation",
+      "notes": "Legacy Policy alias for Action TR."
+    },
+    {
+      "code": "CL",
+      "name": "closed",
+      "status": "rfc_scoped_before_implementation",
+      "notes": "Legacy Policy alias for Action CL."
+    },
+    { "code": "PR", "name": "proceed" }
+  ],
+  "states": [
+    {
+      "code": "TL",
+      "name": "timelocked",
+      "status": "unchanged",
+      "notes": "TL is a State value only. It is not an Action/Policy code."
+    }
+  ],
+  "leg_subtypes": [
+    { "code": "JUD", "name": "judicial" },
+    { "code": "ADM", "name": "administrative" },
+    { "code": "SUPRA", "name": "supranational" },
+    { "code": "LEG_TEXT", "name": "legal_text" },
+    { "code": "PREC", "name": "precedent" }
+  ],
+  "verification_regimes": [
+    {
+      "code": "legal_attestation",
+      "max_confidence": "C",
+      "tarquin_internal": "institutional_attestation",
+      "notes": "Manual or institutionally reviewed legal attestation fallback."
+    },
+    {
+      "code": "structured_legal_attestation",
+      "max_confidence": "B",
+      "notes": "Single Sibyl/LBRY structured proof path. B requires verified LBRY signature under OA-014."
+    },
+    {
+      "code": "multiple_legal_attestation",
+      "max_confidence": "B",
+      "notes": "Independent multi-Sibyl evidence path. Tier-3 remains SO-001 gated."
+    }
+  ],
+  "confidence": {
+    "available_for_live_leg": ["B", "C", "D", "E"],
+    "unavailable_for_live_leg": ["A"],
+    "notes": "A is reserved for a future legal-native regime. B is a ceiling, not a default."
+  },
+  "leg_007": {
+    "status": "incomplete",
+    "matrix_shape": "leg_subtype x Finality x verification_regime -> permitted Action set",
+    "legacy_matrix_shape": "leg_subtype x Finality x verification_regime -> permitted Policy set",
+    "gate": "Real on-chain PR remains unavailable until the LEG-007 derivation matrix is complete and imported by Arrow."
+  },
+  "action_primitives": {
+    "status": "draft",
+    "minimal_common_denominator": [
+      {
+        "primitive": "LegalHold",
+        "covers": ["BL", "HL", "RW"],
+        "notes": "Restriction/review/cure family. AssetFreeze can derive from HL plus scope/duration metadata or BL for hard block."
+      },
+      {
+        "primitive": "EscrowRelease",
+        "covers": ["PR"],
+        "notes": "Authorization/proceed family after full conjunctive gate and human ratification."
+      }
+    ],
+    "uncovered_actions": [
+      {
+      "action": "TR",
+      "status": "rfc_scoped_before_implementation",
+      "notes": "TR should not be treated as generic PR. RFC-009 scopes whether it triggers a workflow, transfer class event, or both."
+      },
+      {
+        "action": "CL",
+        "status": "rfc_scoped_before_implementation",
+        "notes": "CL terminal/lifecycle semantics and Class 6 pairing are unresolved under RFC-009."
+      }
+    ]
+  },
+  "tarquin_engine_rules": [
+    {
+      "id": "ENG-SUPRA-SA-BL",
+      "parity_ref": "primitives: sanctions force-block (LEG-007)",
+      "yields": "BL",
+      "forced": true
+    },
+    {
+      "id": "ENG-PR-ELEVATION",
+      "parity_ref": "primitives: PR-gated escrow release (OA-011/LC-006)",
+      "yields": "PR",
+      "forced": false
+    },
+    {
+      "id": "ENG-DEFAULT-HL",
+      "parity_ref": "engine default",
+      "yields": "HL",
+      "forced": false
+    }
+  ],
+  "primitive_bindings": [
+    {
+      "primitive": "LegalHold",
+      "path": "primitives/src/primitives/LegalHold.sol",
+      "role": "restriction",
+      "permits": ["BL", "HL", "RW"],
+      "refuses": ["PR"]
+    },
+    {
+      "primitive": "EscrowRelease",
+      "path": "primitives/src/primitives/EscrowRelease.sol",
+      "role": "authorization",
+      "permits": ["PR"],
+      "refuses": ["BL", "HL", "RW", "TR", "CL", "Confidence A"]
+    },
+    {
+      "primitive": "LegConsumerGate",
+      "path": "primitives/src/core/LegConsumerGate.sol",
+      "role": "human-ratification gate",
+      "notes": "Stub; concrete deployment supplies ratifier authorization and execution effect."
+    }
+  ],
+  "rule_namespaces": [
+    { "prefix": "LEG", "owner": "Arrow/Tarquin shared LEG validation surface" },
+    { "prefix": "OA", "owner": "Lex.exe Origin Adapter" },
+    { "prefix": "LC", "owner": "LEG Consumer" },
+    { "prefix": "SBYL", "owner": "Sibyl registry" },
+    { "prefix": "LBRY", "owner": "LBRY structured attestation record" },
+    { "prefix": "EN", "owner": "Tarquin native engine obligations" },
+    { "prefix": "ENG", "owner": "Tarquin executable engine rules" },
+    { "prefix": "PR", "owner": "Primitives and parity harness" }
+  ],
+  "arrow_import_contract": {
+    "expected_consumer": "arrow-protocol",
+    "import_mode": "build_time_hash_pinned",
+    "ci_expectation": "Arrow fails CI if checked-in generated validation fixtures drift from this artifact or if the pinned hash changes without review."
+  }
+}

@@ -1,0 +1,57 @@
+/*
+ * slc-late-payment-001 - Concerto data model
+ * Drafting-time artifact; Concerto validation is Gate 1 of the MC-003 loop.
+ */
+namespace org.contractlabs.latepayment@0.1.0
+
+enum AccrualBasis {
+  o FROM_DUE_DATE
+  o FROM_GRACE_EXPIRY
+}
+
+enum ChargeKind {
+  o ANNUAL_RATE
+  o PER_DAY_AMOUNT
+}
+
+enum CapKind {
+  o ABSOLUTE_AMOUNT
+  o PCT_OF_REFERENCE
+}
+
+concept Party {
+  o String name
+}
+
+/* The agreed terms (template model). */
+concept LatePaymentTerms {
+  o Party payer
+  o Party payee
+  o Double principal range=[0.0,]
+  o String currency regex=/^[A-Z]{3}$/
+  o String dueDate regex=/^\d{4}-\d{2}-\d{2}$/
+  o Integer graceDays range=[0,]
+  o AccrualBasis accrualBasis
+  o ChargeKind chargeKind
+  o Double rateOrAmount range=[0.0,]
+  o CapKind capKind
+  o Double capValue range=[0.0,]
+}
+
+/* The post-agreement event the contract logic processes.
+ * PaymentEvent represents payment in full; partial payments are out of scope for v0.1.0.
+ */
+concept PaymentEvent {
+  o String paidDate regex=/^\d{4}-\d{2}-\d{2}$/
+  o Double amountPaid range=[0.0,]
+}
+
+/* The computed obligation. */
+concept LatePaymentResult {
+  o Integer daysLate
+  o Integer chargeableDays
+  o Double lateCharge
+  o Boolean capped
+  o Double totalDue
+  o String obligation  // NONE | LATE_CHARGE_DUE
+}

@@ -1,0 +1,244 @@
+{
+  "schema_version": "0.2",
+  "artifact": "tarquin-arrow-leg-shared-surface",
+  "owner": "Tarquin",
+  "status": "draft",
+  "description": "Tarquin-owned LEG shared surface for Arrow import/check. Build-time contract, not a runtime dependency. v0.2 reconciles the field-4 naming contradiction surfaced by the Fable 5 review (v0.1 asserted Action while Arrow v1.5.2 shipped Control): Arrow v1.6.0-draft has now executed the final rename to Action. v0.2 also pins (rule_id, semantic_slug) pairs per the Arrow rule-ID permanence policy and corrects the stale LEG rule numbering carried in v0.1.",
+  "arrow_alignment": {
+    "arrow_protocol_version": "1.6.0-draft",
+    "ratified_by": ["Arrow Protocol v1.6.0", "Arrow Registries v1.6.0"],
+    "naming_freeze": "Field-4 name Action and rule IDs ACT-001/ACT-002 are final. Arrow rule identifiers are permanent from v1.6.0: retired, never renumbered, never reused.",
+    "normative_sources": [
+      "Arrow docs/protocol/validation-rules-v1.6.0.md",
+      "Arrow registries/actions.json",
+      "Arrow registries/classes.json",
+      "Arrow registries/control_subtypes.json"
+    ],
+    "rfc_note": "Arrow RFC-008 v0.3 is historical design provenance for the Action/Class-4/TR/CL disentanglement. This machine-readable contract aligns to the v1.6.0 protocol and registry artifacts, not to RFC draft paths."
+  },
+  "generated_from": [
+    "specs/leg-origin-amendment.md",
+    "specs/leg-jurisdiction-addendum.md",
+    "specs/legal-system-foundation.md",
+    "lex-exe/leg-origin-adapter.md",
+    "lex-exe/leg-consumer.md",
+    "SBL-9/lbry-legal-attestation.md",
+    "drafts/sibyl/sibyl-registry.schema.json",
+    "crates/tarquin-engine/src/rules.rs",
+    "exports/engine/ruleset.json"
+  ],
+  "canonical_field_4": {
+    "canonical_name": "Action",
+    "wire_position": 4,
+    "status": "final_ratified_arrow_v1_6_0",
+    "registry": "actions.json",
+    "rule_ids": ["ACT-001", "ACT-002"],
+    "legacy_aliases": [
+      { "name": "Control", "used_in": "Arrow v1.5.2 only", "status": "deprecated_type_alias_one_window" },
+      { "name": "Policy", "used_in": "Arrow ≤ v1.5.1; Tarquin v0.1 docs (historical)", "status": "removed_migration_complete_2026-06-14" }
+    ],
+    "alias_rule": "ALS-001: where a JSON artifact carries both a legacy and the canonical field name, values MUST be equal or the artifact is rejected. Aliases accepted on input, never emitted in new artifacts, never crossing a bridge.",
+    "notes": "The canonical six-field wire string never carried a field label; the rename is name-layer only."
+  },
+  "class_terminology": [
+    {
+      "class": 4,
+      "canonical_name": "CONTROL",
+      "legacy_name": "POLICY",
+      "status": "ratified_arrow_v1_6_0",
+      "anchor_registry": "control_subtypes.json (draft; SEM-021 reserved for promotion)",
+      "notes": "Control-plane event class: registry updates, chain/bridge status transitions, protocol upgrades, validator/DVN/OVN topology changes, parameter changes, emergency declarations, supersession. Not the Action field; not Origin PCY. The v0.1 compact alias CTR is dropped (one letter from the retired CTL-* rule family)."
+    },
+    {
+      "class": 6,
+      "canonical_name": "CLOSE",
+      "status": "unchanged",
+      "notes": "Bidirectionally bound to Action CL as of Arrow v1.6.0: SEM-005 (Class 6 ⇒ CL) and SEM-020 (CL ⇒ Class 6). Only valid closure shape: 6:*:FN:CL:1:*."
+    }
+  ],
+  "origins": [
+    {
+      "code": "PCY",
+      "name": "policy_governance_origin",
+      "status": "unchanged",
+      "notes": "PCY remains the governance/policy source domain. 'Policy' now appears in exactly this one canonical namespace."
+    }
+  ],
+  "actions": [
+    { "code": "BL", "name": "block" },
+    { "code": "HL", "name": "hold" },
+    { "code": "RW", "name": "review_or_rework" },
+    {
+      "code": "TR",
+      "name": "trigger",
+      "status": "gated_on_trg_001",
+      "notes": "TR triggers a specified downstream workflow with an explicit action_target envelope, object, and authorizing event (TRG-001 draft). Permitted classes {2,5}. Never generic PR; never itself proof of transfer; never directly executable at the consumer (LC-002)."
+    },
+    {
+      "code": "CL",
+      "name": "closed",
+      "status": "bound_sem_005_sem_020",
+      "notes": "Terminal Action, bidirectionally bound to Class 6 (live in Arrow v1.6.0, fixture F-12). Post-closure events: LFC-007 reserved — SEM-014 reversal/supersession referencing the CL event only."
+    },
+    { "code": "PR", "name": "proceed" }
+  ],
+  "follow_up_event_model": {
+    "source": "Arrow validation-rules-v1.6.0 (SEM-005, SEM-020; LFC-007 reserved)",
+    "affirmed": "new event, same lifecycle_id, State FN, Finality 1, references FN+0 event in related_events; promotion is always a new event, never wall-clock",
+    "reversed": "Class 1, State RV, references reversed event (SEM-014)",
+    "discharged": "Class 6 closure 6:*:FN:CL:1:*",
+    "post_closure": "LFC-007 (reserved): only SEM-014 reversal or Class 4 CONTROL/SUPERSESSION referencing the CL event",
+    "invariant": "A lifecycle without a Class 6 CL event is live and MUST be monitored for follow-up events; lifecycles can only end through Class 6."
+  },
+  "states": [
+    {
+      "code": "TL",
+      "name": "timelocked",
+      "status": "unchanged",
+      "notes": "TL is a State value only. It is not an Action code."
+    }
+  ],
+  "leg_subtypes": [
+    { "code": "JUD", "name": "judicial" },
+    { "code": "ADM", "name": "administrative" },
+    { "code": "SUPRA", "name": "supranational" },
+    { "code": "LEG_TEXT", "name": "legal_text" },
+    { "code": "PREC", "name": "precedent" }
+  ],
+  "verification_regimes": [
+    {
+      "code": "legal_attestation",
+      "max_confidence": "C",
+      "tarquin_internal": "institutional_attestation",
+      "notes": "Manual or institutionally reviewed legal attestation fallback."
+    },
+    {
+      "code": "structured_legal_attestation",
+      "max_confidence": "B",
+      "notes": "Single Sibyl/LBRY structured proof path. B requires verified LBRY signature under OA-014."
+    },
+    {
+      "code": "multiple_legal_attestation",
+      "max_confidence": "B",
+      "notes": "Independent multi-Sibyl evidence path. Tier-3 remains SO-001 gated; until the independence-evidence object is defined this regime must not be minted."
+    }
+  ],
+  "confidence": {
+    "available_for_live_leg": ["B", "C", "D", "E"],
+    "unavailable_for_live_leg": ["A"],
+    "notes": "A is reserved for a future legal-native regime. B is a ceiling, not a default."
+  },
+  "arrow_rule_pins": {
+    "policy": "Pinned (rule_id, semantic_slug) pairs. A drift between an ID and its slug on either side fails CI. Corrects v0.1, which carried pre-v1.5.1 numbering (the derivation gate was cited as LEG-007).",
+    "pins": [
+      { "rule_id": "ACT-001", "slug": "action_registry_membership" },
+      { "rule_id": "ACT-002", "slug": "unknown_action_reject" },
+      { "rule_id": "SEM-005", "slug": "class6_requires_cl" },
+      { "rule_id": "SEM-013", "slug": "fn0_executing_action_ceiling" },
+      { "rule_id": "SEM-020", "slug": "cl_requires_class6" },
+      { "rule_id": "LEG-004", "slug": "confidence_e_forces_rw" },
+      { "rule_id": "LEG-005", "slug": "confidence_d_subtype_gate" },
+      { "rule_id": "LEG-006", "slug": "action_derivation_gate" },
+      { "rule_id": "LEG-007", "slug": "supra_sanctions_force_bl" },
+      { "rule_id": "LEG-008", "slug": "leg_text_prec_finality1_warning" },
+      { "rule_id": "LEG-009", "slug": "leg_jurisdiction_required" },
+      { "rule_id": "LEG-010", "slug": "supra_registry_membership" },
+      { "rule_id": "MSG-006", "slug": "leg_subtype_registry_membership" },
+      { "rule_id": "SEM-021", "slug": "control_subtype_anchor_gate", "status": "reserved" },
+      { "rule_id": "LFC-007", "slug": "post_closure_lifecycle_discipline", "status": "reserved" },
+      { "rule_id": "TRG-001", "slug": "tr_action_target_required", "status": "draft" }
+    ]
+  },
+  "leg_006_derivation": {
+    "rule_id": "LEG-006",
+    "slug": "action_derivation_gate",
+    "status": "factored_complete",
+    "notes": "v0.1 treated the derivation matrix (cited under its pre-v1.5.1 number LEG-007) as an incomplete monolithic object gating real PR. Per the Fable 5 review, the matrix exists in factored form: LEG-006 (subtype × Finality=1 → permitted Action set) + SEM-013 (Finality=0 row) + SEM-015 (regime → confidence ceiling) + LEG-004/LEG-005 (confidence → action floors). The remaining ask on Arrow is a generated, hash-pinned derived-matrix export (exports/leg-derivation-matrix.v1.json) computed from these factors — never hand-edited — for OA-008 preflight and parity-corpus generation. Real on-chain PR remains gated on the consumer-side items (execution scope binding, execution-time re-validation), not on new matrix spec work."
+  },
+  "action_primitives": {
+    "status": "draft",
+    "minimal_common_denominator": [
+      {
+        "primitive": "LegalHold",
+        "covers": ["BL", "HL", "RW"],
+        "notes": "Restriction/review/cure family. AssetFreeze can derive from HL plus scope/duration metadata or BL for hard block."
+      },
+      {
+        "primitive": "EscrowRelease",
+        "covers": ["PR"],
+        "notes": "Authorization/proceed family after full conjunctive gate and human ratification."
+      }
+    ],
+    "uncovered_actions": [
+      {
+        "action": "TR",
+        "status": "gated_on_trg_001",
+        "notes": "No TransferOrder primitive until TRG-001 (action_target) and execution-scope binding land."
+      },
+      {
+        "action": "CL",
+        "status": "gated_on_lfc_007",
+        "notes": "No lifecycle Closed primitive until LFC-007 lands. SEM-020 binding is live protocol-side."
+      }
+    ]
+  },
+  "tarquin_engine_rules": [
+    {
+      "id": "ENG-SUPRA-SA-BL",
+      "parity_ref": "primitives: sanctions force-block (LEG-007 / supra_sanctions_force_bl)",
+      "yields": "BL",
+      "forced": true
+    },
+    {
+      "id": "ENG-PR-ELEVATION",
+      "parity_ref": "primitives: PR-gated escrow release (OA-011/LC-006)",
+      "yields": "PR",
+      "forced": false
+    },
+    {
+      "id": "ENG-DEFAULT-HL",
+      "parity_ref": "engine default",
+      "yields": "HL",
+      "forced": false
+    }
+  ],
+  "primitive_bindings": [
+    {
+      "primitive": "LegalHold",
+      "path": "primitives/src/primitives/LegalHold.sol",
+      "role": "restriction",
+      "permits": ["BL", "HL", "RW"],
+      "refuses": ["PR"]
+    },
+    {
+      "primitive": "EscrowRelease",
+      "path": "primitives/src/primitives/EscrowRelease.sol",
+      "role": "authorization",
+      "permits": ["PR"],
+      "refuses": ["BL", "HL", "RW", "TR", "CL", "Confidence A"]
+    },
+    {
+      "primitive": "LegConsumerGate",
+      "path": "primitives/src/core/LegConsumerGate.sol",
+      "role": "human-ratification gate",
+      "notes": "Stub; concrete deployment supplies ratifier authorization and execution effect."
+    }
+  ],
+  "solidity_alias_note": "primitives/Types.sol field-4 enum is now Action (migration complete 2026-06-14). The on-chain Disposition field, generated RuleEngineV01.sol / RuleEngineParity.t.sol, and ruleEngine.ts all use Action; cross-target parity is green. No Policy alias remains in code.",
+  "rule_namespaces": [
+    { "prefix": "LEG", "owner": "Arrow/Tarquin shared LEG validation surface" },
+    { "prefix": "ACT", "owner": "Arrow field-4 (Action) structural rules" },
+    { "prefix": "OA", "owner": "Lex.exe Origin Adapter" },
+    { "prefix": "LC", "owner": "LEG Consumer" },
+    { "prefix": "SBYL", "owner": "Sibyl registry" },
+    { "prefix": "LBRY", "owner": "LBRY structured attestation record" },
+    { "prefix": "EN", "owner": "Tarquin native engine obligations" },
+    { "prefix": "ENG", "owner": "Tarquin executable engine rules" },
+    { "prefix": "PR", "owner": "Primitives and parity harness" }
+  ],
+  "arrow_import_contract": {
+    "expected_consumer": "arrow-protocol",
+    "import_mode": "build_time_hash_pinned",
+    "ci_expectation": "Arrow fails CI if checked-in generated validation fixtures drift from this artifact or if the pinned hash changes without review. Rule-pin drift (rule_id vs slug) fails CI on both sides."
+  }
+}

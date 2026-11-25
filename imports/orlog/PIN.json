@@ -1,0 +1,31 @@
+{
+  "pin_schema_version": "0.1",
+  "description": "Pinned Orlog (formerly Contract Labs) SLC bundles consumed by Tarquin. Build-time copies, not live path dependencies (ADR-0001 / MC-006 handoff rule). Each bundle is verified against its manifest artifact_hash before any fixture recomputation; drift rejects the bundle.",
+  "source_repo": "Dev/Orlog",
+  "pins": [
+    {
+      "artifact_id": "slc-late-payment-001",
+      "version": "0.1.0",
+      "artifact_hash": "sha256:c0ac8c5ead20d8f07058164f7ab633c812494c408b3fdccc25300adf1e67b30e",
+      "source_commit": "2826aea",
+      "source_path": "slc/slc-late-payment-001",
+      "pinned_path": "imports/orlog/slc-late-payment-001",
+      "pinned_at": "2026-06-11",
+      "jurisdictions": ["US-NY"],
+      "fixture_cases_used": ["disputed-001"],
+      "hash_convention": "MC-006: SHA-256 over every file under the bundle in sorted path order; path and payload NUL-separated; manifest.json included after deleting artifact_hash and serializing with sorted keys (JSON, 2-space indent, trailing newline)."
+    },
+    {
+      "artifact_id": "lex-grounding-001",
+      "version": "0.1.0",
+      "artifact_hash": "sha256:fb2d2e099629c23a730267b51c331ce38df7f9732392647f400d6e378a6b131f",
+      "source_commit": "8f7836a",
+      "source_path": "lex/handoff/legal-grounding-manifest.json",
+      "pinned_path": "imports/orlog/lex-grounding-001",
+      "pinned_at": "2026-07-07",
+      "jurisdictions": ["GENERAL", "MX", "US"],
+      "nodes": 33,
+      "hash_convention": "MC-007 (MC-006 pattern): SHA-256 over every sealed node file in sorted bundle-relative path order; path and payload NUL-separated; the legal-grounding manifest included last after deleting bundle_hash and serializing with sorted keys (JSON, 2-space indent, trailing newline). Profiles may cite lex_refs ONLY from this pinned bundle; drift rejects."
+    }
+  ]
+}

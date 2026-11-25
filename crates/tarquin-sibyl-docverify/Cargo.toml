@@ -1,0 +1,18 @@
+[package]
+name = "tarquin-sibyl-docverify"
+version = "0.1.0"
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+description = "Tarquin Sibyl document-verification engine — extraction, profiling, and ClaimedFinding assembly."
+
+[dependencies]
+tarquin-sibyl = { workspace = true }
+serde.workspace = true
+serde_json.workspace = true
+thiserror.workspace = true
+sha2.workspace = true
+
+[[bin]]
+name = "sibyl-docverify"
+path = "src/bin/sibyl-docverify.rs"

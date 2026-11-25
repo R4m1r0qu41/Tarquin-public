@@ -1,0 +1,36 @@
+[
+  {
+    "id": "ENG-SUPRA-SA-BL",
+    "parity_ref": "primitives: sanctions force-block (LEG-007)",
+    "when": [
+      {
+        "SubtypeEquals": "SUPRA"
+      },
+      {
+        "FinalityEquals": 1
+      },
+      {
+        "ReasonCodeEquals": "SA"
+      }
+    ],
+    "yields": "BL",
+    "forced": true
+  },
+  {
+    "id": "ENG-PR-ELEVATION",
+    "parity_ref": "primitives: PR-gated escrow release (OA-011/LC-006)",
+    "when": [
+      {
+        "RegimeEquals": "structured_legal_attestation"
+      },
+      "ProofInstrumentSpecific",
+      "SibylRegisteredActive",
+      {
+        "FinalityEquals": 1
+      },
+      "LexCodexPermitsPr"
+    ],
+    "yields": "PR",
+    "forced": false
+  }
+]

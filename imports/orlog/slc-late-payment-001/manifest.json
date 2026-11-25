@@ -1,0 +1,43 @@
+{
+  "artifact_id": "slc-late-payment-001",
+  "name": "Late Payment Clause",
+  "version": "0.1.0",
+  "status": "draft",
+  "artifact_hash": "sha256:c0ac8c5ead20d8f07058164f7ab633c812494c408b3fdccc25300adf1e67b30e",
+  "taxonomy_ref": "tax-commercial.payment.late-payment",
+  "jurisdictions": [
+    "US-NY"
+  ],
+  "legal_system_refs": [
+    "LS-US-STATE-01"
+  ],
+  "source_refs": [
+    "lex-us-ny-ucc-2-718",
+    "lex-us-ny-ucc-2-719"
+  ],
+  "clause_primitives": [
+    "prim-grace-period",
+    "prim-late-fee-interest",
+    "prim-remedy-cap"
+  ],
+  "concerto_model": "model/model.cto",
+  "templatemark": "text/grammar.tem.md",
+  "logic": "logic/logic.ts",
+  "fixtures": [
+    "fixtures/valid.json",
+    "fixtures/invalid.json",
+    "fixtures/disputed.json"
+  ],
+  "tests": [
+    "tests/logic.test.ts"
+  ],
+  "provenance": "provenance.md",
+  "tarquin_handoff": {
+    "lex_codex_target": null,
+    "computability": "full",
+    "requires_human_review": true,
+    "review_reason": "New York UCC 2-718/2-719 sources are pinned; reasonableness, penalty analysis, essential-purpose failure, and unconscionability remain human legal judgments.",
+    "arrow_note": "Handoff hint only. This artifact is not an Arrow event, claims no Arrow-valid emission, and binds to no LEG surface. Any LEG emission is Tarquin's (Lex.exe) after Lex.Codex curation."
+  },
+  "legal_unverified": []
+}

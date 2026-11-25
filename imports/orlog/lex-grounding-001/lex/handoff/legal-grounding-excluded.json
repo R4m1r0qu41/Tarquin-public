@@ -1,0 +1,41 @@
+{
+  "bundle_id": "lex-grounding-001",
+  "note": "Nodes NOT in the sealed bundle — tracked, not hidden (MC-007 §3.1). Each stays excluded until verified with a non-TODO source pin.",
+  "excluded": [
+    {
+      "id": "concept-grace-period",
+      "path": "lex/concepts/concept-grace-period.md",
+      "status": "LEGAL_UNVERIFIED"
+    },
+    {
+      "id": "concept-liquidated-damages",
+      "path": "lex/concepts/concept-liquidated-damages.md",
+      "status": "LEGAL_UNVERIFIED"
+    },
+    {
+      "id": "lex-us-ucc-2-601",
+      "path": "lex/jurisdictions/us/lex-us-ucc-2-601.md",
+      "status": "LEGAL_UNVERIFIED"
+    },
+    {
+      "id": "lex-us-ucc-2-718",
+      "path": "lex/jurisdictions/us/lex-us-ucc-2-718.md",
+      "status": "LEGAL_UNVERIFIED"
+    },
+    {
+      "id": "lex-us-ucc-2-719",
+      "path": "lex/jurisdictions/us/lex-us-ucc-2-719.md",
+      "status": "LEGAL_UNVERIFIED"
+    },
+    {
+      "id": "lex-us-ucc-3-104",
+      "path": "lex/jurisdictions/us/lex-us-ucc-3-104.md",
+      "status": "LEGAL_UNVERIFIED"
+    },
+    {
+      "id": "lex-us-ucc-3-112",
+      "path": "lex/jurisdictions/us/lex-us-ucc-3-112.md",
+      "status": "LEGAL_UNVERIFIED"
+    }
+  ]
+}

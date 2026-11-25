@@ -1,0 +1,23 @@
+.DS_Store
+.obsidian/workspace.json
+.obsidian/workspace-mobile.json
+.trash/
+node_modules/
+dist/
+build/
+coverage/
+target/
+out/
+cache/
+# Generated demo artifacts (contain throwaway private keys) — `sibyl slice` output.
+exports/sibyl-demo/
+.env
+.env.*
+!.env.example
+*.log
+*.tmp
+*.bak
+
+
+# Large source PDFs retained locally
+sources/**/*.pdf
